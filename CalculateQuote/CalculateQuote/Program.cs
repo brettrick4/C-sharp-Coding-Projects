@@ -10,46 +10,27 @@ namespace CalculateQuote
     {
         static void Main()
         {
+            CarYearQuote carQuote = new CarYearQuote();
             Console.WriteLine("Age from birth date");
-            DateTime Dob = Convert.ToDateTime(Console.ReadLine());
-            DateTime Now = DateTime.Now;
-            int age = new DateTime(DateTime.Now.Subtract(Dob).Ticks).Year - 1;
-            DateTime PastYearDate = Dob.AddYears(age);
-            int months = 0;
-            for (int i = 1; i <= 12; i++)
-            {
-                if (PastYearDate.AddMonths(i) == Now)
-                {
-                    months = i;
-                }
-            }
+            carQuote.CalcAge();
 
-            int x = 50;
-            if (age < 25)
-            {
-                int y = x + 25;
-                Console.WriteLine("Age: {0} years Y = {1}", age, y);
-                Console.ReadLine();
-            }
-            else if (age <= 18)
-            {
-                int y = x + 100;
-                Console.WriteLine("Age: {0} years Y = {1}", age, y);
-                Console.ReadLine();
-            }
-            else if (age >= 100)
-            {
-                var y = x + 25;
-                Console.WriteLine("Age: {0} years Y = {1}", age, y);
-                Console.ReadLine();
-            }
-            else
-            {
-                int y = x;
-                Console.WriteLine("Age: {0} years Y = {1}", age, y);
-                Console.ReadLine();
-            }
-            
+            Console.WriteLine("Car year");
+            carQuote.YearQuote(p);
+
+            Console.WriteLine("Car Make");
+            carQuote.MakeQuote(porshe);
+
+            Console.WriteLine("Car Model");
+            carQuote.ModelQuote(porshe);
+
+            Console.WriteLine("How many speeding tickets have you gotten?");
+            carQuote.TicketCount(nowTotal);
+
+            Console.WriteLine("Do you have a DUI on your record?");
+            carQuote.DUI();
+
+            Console.WriteLine("Would you like full coverage or just liability");
+            carQuote.Coverage(nowTotal);
         }
     }
 }
