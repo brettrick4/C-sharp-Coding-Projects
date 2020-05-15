@@ -1,0 +1,31 @@
+﻿@using InsuranceQuote.Models
+@model List<InsuranceGetQuote>
+
+<div class="row no-gutters m-3">
+    <div class="card col-sm-12 col-md-10 col-lg-6 mx-auto shadow">
+        <div class="card-header text-center">
+            <h3 class="m-0">Saved information</h3>
+        </div>
+        <div class="card-body">
+            @foreach (var getquote in Model)
+            {
+                <input type="hidden" name="Id" value="@getquote.Id" />
+                <div class="row">
+                    <div class="col">
+                        @getquote.firstName
+                    </div>
+                    <div class="col">
+                        @getquote.lastName
+                    </div>
+                    <div class="col">
+                        @getquote.emailAddress
+                    </div>
+                    @*<div class="col">
+                        @getquote.quote
+                    </div>*@
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
