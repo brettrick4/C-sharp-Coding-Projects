@@ -1,6 +1,0 @@
-C:\Users\Student\source\repos\CalculateQuote\CalculateQuote\bin\Debug\CalculateQuote.exe.config
-C:\Users\Student\source\repos\CalculateQuote\CalculateQuote\bin\Debug\CalculateQuote.exe
-C:\Users\Student\source\repos\CalculateQuote\CalculateQuote\bin\Debug\CalculateQuote.pdb
-C:\Users\Student\source\repos\CalculateQuote\CalculateQuote\obj\Debug\CalculateQuote.csprojAssemblyReference.cache
-C:\Users\Student\source\repos\CalculateQuote\CalculateQuote\obj\Debug\CalculateQuote.exe
-C:\Users\Student\source\repos\CalculateQuote\CalculateQuote\obj\Debug\CalculateQuote.pdb
