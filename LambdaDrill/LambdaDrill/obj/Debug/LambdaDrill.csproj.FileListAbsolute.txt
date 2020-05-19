@@ -1,0 +1,12 @@
+C:\Users\Student\source\repos\LambdaDrill\LambdaDrill\bin\Debug\LambdaDrill.exe.config
+C:\Users\Student\source\repos\LambdaDrill\LambdaDrill\bin\Debug\LambdaDrill.exe
+C:\Users\Student\source\repos\LambdaDrill\LambdaDrill\bin\Debug\LambdaDrill.pdb
+C:\Users\Student\source\repos\LambdaDrill\LambdaDrill\obj\Debug\LambdaDrill.csprojAssemblyReference.cache
+C:\Users\Student\source\repos\LambdaDrill\LambdaDrill\obj\Debug\LambdaDrill.exe
+C:\Users\Student\source\repos\LambdaDrill\LambdaDrill\obj\Debug\LambdaDrill.pdb
+C:\Users\Student\source\repos\LambdaDrillRoughDraft\LambdaDrill\bin\Debug\LambdaDrill.exe.config
+C:\Users\Student\source\repos\LambdaDrillRoughDraft\LambdaDrill\bin\Debug\LambdaDrill.exe
+C:\Users\Student\source\repos\LambdaDrillRoughDraft\LambdaDrill\bin\Debug\LambdaDrill.pdb
+C:\Users\Student\source\repos\LambdaDrillRoughDraft\LambdaDrill\obj\Debug\LambdaDrill.csprojAssemblyReference.cache
+C:\Users\Student\source\repos\LambdaDrillRoughDraft\LambdaDrill\obj\Debug\LambdaDrill.exe
+C:\Users\Student\source\repos\LambdaDrillRoughDraft\LambdaDrill\obj\Debug\LambdaDrill.pdb
