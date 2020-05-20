@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using MVCCarInsurance.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace MVCCarInsurance.Controllers
 {
@@ -41,11 +37,7 @@ namespace MVCCarInsurance.Controllers
         {
             return View();
         }
-        //if (Method1())
-        //    if (Method2())
-        //    {
-        //    }
-
+        
         // POST: Insuree/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -55,138 +47,99 @@ namespace MVCCarInsurance.Controllers
         {
             if (ModelState.IsValid)
             {
+                DateTime DateOfBirth = new DateTime();
+                DateTime Dob = Convert.ToDateTime(DateOfBirth);
+                DateTime Now = DateTime.Now;
+                int age = new DateTime(DateTime.Now.Subtract(Dob).Ticks).Year - 1;
+                DateTime PastYearDate = Dob.AddYears(age);
+                int months = 0;
+                for (int i = 1; i <= 12; i++)
+                {
+                    if (PastYearDate.AddMonths(i) == Now)
+                    {
+                        months = i;
+                    }
+                }
+
                 int x = 25;
                 int y = 50;
                 int z = 100;
-                void CalcAge()
+                if (age < 25)
                 {
-                    Insuree insuree = new Insuree();
-                    DateTime DateOfBirth = new DateTime();
-                    DateTime Dob = Convert.ToDateTime(DateOfBirth);
-                    DateTime Now = DateTime.Now;
-                    int age = new DateTime(DateTime.Now.Subtract(Dob).Ticks).Year - 1;
-                    DateTime PastYearDate = Dob.AddYears(age);
-                    int months = 0;
-                    for (int i = 1; i <= 12; i++)
-                    {
-                        if (PastYearDate.AddMonths(i) == Now)
-                        {
-                            months = i;
-                        }
-                    }
-                
-                    int firstPrice = y;
-                    if (age < 25)
-                    {
-                        int newPrice = firstPrice + x;
-                        //Console.WriteLine("Age: {0} years current monthly total: {1}", age, newPrice);
-                    }
-                    else if (age <= 18)
-                    {
-                        int newPrice = firstPrice + z;
-                        //Console.WriteLine("Age: {0} years current monthly total: {1}", age, newPrice);
-                    }
-                    else if (age >= 100)
-                    {
-                        int newPrice = firstPrice + x;
-                        //Console.WriteLine("Age: {0} years current monthly total: {1}", age, newPrice);
-                    }
-                    else
-                    {
-                        int newPrice = firstPrice;
-                        //Console.WriteLine("Age: {0} years current monthly total: {1}", age, newPrice);
-                    }
-                    //Console.ReadLine();
+                    y += x;
                 }
-
-                void YearPrice(int newPrice, int firstPrice)
+                else if (age <= 18)
                 {
-                    int carYear = new Insuree.CarYear();
-
-                    if (carYear < 2000)
-                    {
-                        int newAmount = newPrice + x;
-                        //Console.WriteLine("Your current estimated total is: {0}", newAmount);
-                    }
-                    else if (carYear > 2015)
-                    {
-                        int newAmount = newPrice + x;
-                        //Console.WriteLine("Your current estimated total is: {0}", newAmount);
-                    }
-                    else
-                    {
-                        int newAmount = newPrice;
-                        //Console.WriteLine("Your current estimated total is: {0}", newAmount);
-                    }
-                    //Console.ReadLine();
+                    y += z;
+                }
+                else if (age >= 100)
+                {
+                    y += x;
+                }
+                else
+                {
+                    y = y;
                 }
                 
-                void MakePrice(int newAmount)
+                if (insuree.CarYear < 2000)
                 {
-                    string carMake = Convert.ToString(Insuree.CarMake).ToLower();
-                    if (carMake == "Porshe")
-                    {
-                        int porshePrice = newAmount + x;
-                    }
-                    else
-                    {
-                        int porshePrice = newAmount;
-                    }
+                    y += x;
+                }
+                else if (insuree.CarYear > 2015)
+                {
+                    y += x;
+                }
+                else
+                {
+                    y = y;
                 }
                 
-                void ModelPrice(int newAmount, string carMake, string carModel)
+                if (insuree.CarMake == "Porshe")
                 {
-                    if (carMake == "Porshe" && carModel == "911 Carrera")
-                    {
-                        int porshePrice = newAmount + y;
-                    }
-                    else
-                    {
-                        int porshePrice = newAmount;
-                    }
+                    y += x;
+                }
+                else
+                {
+                    y = y;
+                }
+                
+                if (insuree.CarMake == "Porshe" && insuree.CarModel == "911 Carrera")
+                {
+                    y += y;
+                }
+                else
+                {
+                    y = y;
                 }
 
-                void TicketCount(int porshePrice)
+                if (insuree.SpeedingTickets > 0)
                 {
-                    Insuree.SpeedingTickets tickets = new Insuree.SpeedingTickets();
-                    if (tickets > 0)
-                    {
-                        int newTotal = porshePrice * 10;
-                    }
-                    else
-                    {
-                        int newTotal = porshePrice;
-                    }
+                    y = (insuree.SpeedingTickets * 10) + y;
+                }
+                else
+                {
+                    y = y;
+                }
+                
+                if (insuree.DUI == true)
+                {
+                    y = (y / 4) + y;
+                }
+                else
+                {
+                    y = y;
+                }
+                
+                if (insuree.CoverageType != true)
+                {
+                    y = y;
+                }
+                else
+                {
+                    y = (y / 2) + y;
                 }
 
-                void DUI(int newTotal)
-                {
-                    Insuree.DUI dui = new Insuree.DUI;
-                    if (dui == true)
-                    {
-                        int nowTotal = (newTotal / 4) + newTotal;
-                    }
-                    else
-                    {
-                        int nowTotal = newTotal;
-                    }
-                }
-
-                void Coverage(int nowTotal)
-                {
-                    Insuree.CoverageType coverage = new Insuree.CoverageType;
-                    if (coverage = "Full")
-                    {
-                        int finalTotal = (nowTotal / 2) + nowTotal;
-                    }
-                    else
-                    {
-                        int finalTotal = nowTotal;
-                    }
-                }
-                Console.ReadLine();
-
-
+                insuree.Quote = y;
                 db.Insurees.Add(insuree);
                 db.SaveChanges();
                 return RedirectToAction("Index");
